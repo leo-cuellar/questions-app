@@ -2,6 +2,7 @@ import { View } from "react-native";
 import { Spacer } from "../library/Spacer";
 import { useEffect, useState } from "react";
 import { OptionButton } from "./OptionButton";
+import { useAnswer } from "../../hooks/useAnswer";
 
 export type Option = {
   id: string;
@@ -14,23 +15,12 @@ type OptionsProps = {
 };
 
 export const Options = ({ id, options }: OptionsProps) => {
-  const [answer, setAnswer] = useState("");
   const [selected, setSelected] = useState("");
-
-  const handleOptionClick = (id) => {
+  const handleOptionClick = (id: string) => {
     if (!selected) setSelected(id);
   };
 
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        "https://cross-platform.rp.devfactory.com/reveal?id=" + id
-      );
-      const data = await response.json();
-      setAnswer(data.correct_options[0].id);
-    })();
-  }, []);
-
+  const { answer } = useAnswer(id);
   if (!answer) return null;
 
   return (

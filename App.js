@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { debounce } from "lodash";
 import { BottomNavigation, Feed, Header } from "./components";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   const [questions, setQuestions] = useState([]);
@@ -55,6 +56,7 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
+      <StatusBar style="light" />
       <Header timer={timerText} />
       <Feed questions={questions} onScroll={handleScroll} />
       <BottomNavigation />
