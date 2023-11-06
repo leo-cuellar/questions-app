@@ -1,7 +1,7 @@
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ActionItem } from "./ActionItem";
-import { colors } from "../utils/tokens";
+import { ActionItem } from "../library/ActionItem";
+import { colors } from "../../utils/tokens";
 
 const bottomNavigationItems = [
   {
@@ -31,12 +31,19 @@ const bottomNavigationItems = [
   },
 ];
 
+type BottomNavigationItem = {
+  icon: string;
+  label: string;
+  selected: boolean;
+};
+
 export const BottomNavigation = () => {
   const insets = useSafeAreaInsets();
   return (
     <View style={{ ...styles.container, paddingBottom: insets.bottom }}>
-      {bottomNavigationItems.map((item) => (
+      {bottomNavigationItems.map((item: BottomNavigationItem, idx) => (
         <ActionItem
+          key={idx}
           icon={item.icon}
           label={item.label}
           selected={item.selected}

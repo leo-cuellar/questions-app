@@ -1,7 +1,12 @@
 import { Text, View } from "react-native";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
-export const Description = ({ userName, description }) => {
+type DescriptionProps = {
+  userName: string;
+  description: string;
+};
+
+export const Description = ({ userName, description }: DescriptionProps) => {
   return (
     <View>
       <View style={{}}>

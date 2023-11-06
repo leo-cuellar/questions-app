@@ -1,9 +1,23 @@
 import { Pressable, StyleSheet, Text, View, Animated } from "react-native";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 import { useEffect, useRef, useState } from "react";
 import { Image } from "react-native";
 
-export const OptionButton = ({ id, text, isCorrect, selected, onClick }) => {
+type OptionButtonProps = {
+  id: string;
+  text: string;
+  isCorrect: boolean;
+  selected: string;
+  onClick: () => void;
+};
+
+export const OptionButton = ({
+  id,
+  text,
+  isCorrect,
+  selected,
+  onClick,
+}: OptionButtonProps) => {
   const [width, setWidth] = useState(0);
   const leftPosition = useRef(new Animated.Value(0)).current;
 
@@ -27,17 +41,18 @@ export const OptionButton = ({ id, text, isCorrect, selected, onClick }) => {
             (isCorrect ? (
               <Image
                 style={styles.thumbsup}
-                source={require("../assets/gifs/thumbsup.gif")}
+                source={require("../../assets/gifs/thumbsup.gif")}
               />
             ) : (
               <Image
                 style={styles.thumbsdown}
-                source={require("../assets/gifs/thumbsdown.gif")}
+                source={require("../../assets/gifs/thumbsdown.gif")}
               />
             ))}
         </View>
         <Animated.View
           style={[
+            styles.background,
             styles.backgroundContainer,
             {
               transform: [
@@ -48,8 +63,20 @@ export const OptionButton = ({ id, text, isCorrect, selected, onClick }) => {
             },
           ]}
         >
-          <View style={styles.notSelected}></View>
-          <View style={isCorrect ? styles.correct : styles.incorrect}></View>
+          <View
+            style={{
+              ...styles.background,
+              backgroundColor: colors.transparentWhite,
+            }}
+          ></View>
+          <View
+            style={[
+              styles.background,
+              isCorrect
+                ? { backgroundColor: colors.transparentGreen }
+                : { backgroundColor: colors.transparentRed },
+            ]}
+          ></View>
         </Animated.View>
       </View>
     </Pressable>
@@ -77,57 +104,38 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
   },
-  backgroundContainer: {
+  background: {
     width: "100%",
     height: "100%",
+  },
+  backgroundContainer: {
     position: "absolute",
     display: "flex",
     flexDirection: "row",
   },
-  notSelected: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: colors.transparentWhite,
-  },
-  correct: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: colors.transparentGreen,
-  },
-  incorrect: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: colors.transparentRed,
-  },
   optionText: {
+    backgroundColor: "transparent",
+    width: "85%",
     fontSize: 17,
     color: colors.white,
     textShadowColor: colors.black,
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 1,
   },
-  shadowText: {
-    fontSize: 17,
-    color: colors.white,
-    textShadowColor: colors.black,
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 10,
-    position: "absolute",
-    top: 12,
-    left: 12,
-  },
   thumbsup: {
     position: "absolute",
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     transform: [{ scaleX: -1 }],
     right: 0,
+    bottom: 0,
   },
   thumbsdown: {
     position: "absolute",
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     transform: [{ scaleX: -1 }, { scaleY: -1 }],
     right: 0,
+    top: 0,
   },
 });

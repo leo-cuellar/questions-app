@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Icon } from "./Icon";
-import { colors } from "../utils/tokens";
+import { Icon } from "../library/Icon";
+import { colors } from "../../utils/tokens";
 
-export const Playlist = ({ playlist }) => {
+export const Playlist = ({ playlist }: { playlist: string }) => {
   return (
     <View style={styles.container}>
       <View style={styles.playlistInfo}>

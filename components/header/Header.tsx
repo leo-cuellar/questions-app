@@ -1,9 +1,9 @@
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { Icon } from "./Icon";
+import { Icon } from "../library/Icon";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
-export const Header = ({ timer }) => {
+export const Header = ({ timer }: { timer: string }) => {
   const insets = useSafeAreaInsets();
 
   return (

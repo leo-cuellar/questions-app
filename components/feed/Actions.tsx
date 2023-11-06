@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import { ActionItem } from "./ActionItem";
-import { Profile } from "./Profile";
-import { colors } from "../utils/tokens";
-import { Spacer } from "./Spacer";
+import { ActionItem } from "../library/ActionItem";
+import { Profile } from "../library/Profile";
+import { colors } from "../../utils/tokens";
+import { Spacer } from "../library/Spacer";
 
 const items = [
   {
@@ -27,7 +27,7 @@ const items = [
   },
 ];
 
-export const QuestionActions = ({ source }) => {
+export const Actions = ({ source }: { source: string }) => {
   return (
     <View style={styles.container}>
       <Profile source={source} />
@@ -35,7 +35,7 @@ export const QuestionActions = ({ source }) => {
       <Spacer />
 
       {items.map((item) => (
-        <>
+        <View key={item.icon}>
           <Spacer />
           <ActionItem
             icon={item.icon}
@@ -44,7 +44,7 @@ export const QuestionActions = ({ source }) => {
             iconLabelSize={12}
             selected
           />
-        </>
+        </View>
       ))}
       <Spacer />
     </View>
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "flex-end",
     alignItems: "center",
+    backgroundColor: "transparent",
     shadowColor: colors.black,
     shadowOffset: {
       width: 0,

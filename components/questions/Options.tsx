@@ -1,9 +1,19 @@
 import { View } from "react-native";
-import { Spacer } from "./Spacer";
+import { Spacer } from "../library/Spacer";
 import { useEffect, useState } from "react";
 import { OptionButton } from "./OptionButton";
 
-export const Options = ({ id, options }) => {
+export type Option = {
+  id: string;
+  answer: string;
+};
+
+type OptionsProps = {
+  id: string;
+  options: Option[];
+};
+
+export const Options = ({ id, options }: OptionsProps) => {
   const [answer, setAnswer] = useState("");
   const [selected, setSelected] = useState("");
 

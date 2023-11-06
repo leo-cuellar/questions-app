@@ -1,8 +1,13 @@
 import { Dimensions, ImageBackground, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
-export const Background = ({ source, children }) => {
+type BackgroundProps = {
+  source: string;
+  children: React.ReactNode;
+};
+
+export const Background = ({ source, children }: BackgroundProps) => {
   const insets = useSafeAreaInsets();
 
   return (

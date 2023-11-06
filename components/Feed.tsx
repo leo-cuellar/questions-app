@@ -1,7 +1,24 @@
 import { Dimensions, ScrollView } from "react-native";
-import { FeedItem } from "./FeedItem";
+import { FeedItem } from "./feed/FeedItem";
+import { Option } from "./questions/Options";
 
-export const Feed = ({ onScroll, questions }) => {
+type FeedProps = {
+  onScroll: (event: any) => void;
+  questions: {
+    image: string;
+    question: string;
+    id: string;
+    options: Option[];
+    user: {
+      name: string;
+      avatar: string;
+    };
+    description: string;
+    playlist: string;
+  }[];
+};
+
+export const Feed = ({ onScroll, questions }: FeedProps) => {
   return (
     <ScrollView
       onScroll={onScroll}

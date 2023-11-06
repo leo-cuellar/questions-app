@@ -1,14 +1,28 @@
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { Background } from "./Background";
-import { QuestionText } from "./QuestionText";
+import { QuestionText } from "../questions/QuestionText";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Icon } from "./Icon";
 import { Playlist } from "./Playlist";
-import { Description } from "./Description";
-import { QuestionActions } from "./QuestionActions";
-import { Options } from "./Options";
+import { Description } from "../questions/Description";
+import { Actions } from "./Actions";
+import { Option, Options } from "../questions/Options";
 
-export const FeedItem = ({ data }) => {
+export type FeedItemProps = {
+  data: {
+    image: string;
+    question: string;
+    id: string;
+    options: Option[];
+    user: {
+      name: string;
+      avatar: string;
+    };
+    description: string;
+    playlist: string;
+  };
+};
+
+export const FeedItem = ({ data }: FeedItemProps) => {
   const insets = useSafeAreaInsets();
 
   return (
@@ -35,7 +49,7 @@ export const FeedItem = ({ data }) => {
               />
             </View>
           </View>
-          <QuestionActions source={data.user.avatar} />
+          <Actions source={data.user.avatar} />
         </View>
         <Playlist playlist={data.playlist} />
       </View>

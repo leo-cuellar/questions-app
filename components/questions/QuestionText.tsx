@@ -1,10 +1,14 @@
 import { Dimensions, StyleSheet, Text, View } from "react-native";
-import { colors } from "../utils/tokens";
-import { createLines, getLineWidthEstimate } from "../utils/textProcessing";
+import { colors } from "../../utils/tokens";
+import { createLines } from "../../utils/textProcessing";
 
 const fontSize = 22;
 
-export const QuestionText = ({ text }) => {
+type QuestionTextProps = {
+  text: string;
+};
+
+export const QuestionText = ({ text }: QuestionTextProps) => {
   const containerWidth = Dimensions.get("window").width - 160;
   const averageCharWidth = fontSize * 0.5;
   const maxChars = Math.floor(containerWidth / averageCharWidth);

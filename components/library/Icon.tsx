@@ -5,7 +5,7 @@ import {
   Entypo,
   AntDesign,
 } from "@expo/vector-icons";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
 type IconProps = {
   name: string;

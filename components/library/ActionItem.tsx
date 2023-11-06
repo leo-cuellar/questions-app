@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "./Icon";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
-type ActionItemType = {
+type ActionItemProps = {
   icon: string;
   label: string;
   iconSize?: number;
@@ -16,7 +16,7 @@ export const ActionItem = ({
   iconSize,
   iconLabelSize,
   selected = false,
-}: ActionItemType) => {
+}: ActionItemProps) => {
   return (
     <View style={styles.container}>
       <Icon

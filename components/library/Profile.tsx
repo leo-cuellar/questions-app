@@ -1,9 +1,9 @@
 import { Image } from "expo-image";
 import { StyleSheet, View } from "react-native";
 import { Icon } from "./Icon";
-import { colors } from "../utils/tokens";
+import { colors } from "../../utils/tokens";
 
-export const Profile = ({ source }) => {
+export const Profile = ({ source }: { source: string }) => {
   return (
     <View
       style={{
