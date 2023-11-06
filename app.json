@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5cc29287-6c57-40ad-8c80-cd4dd77db984"
+      }
+    },
+    "owner": "leocuellar94"
   }
 }
